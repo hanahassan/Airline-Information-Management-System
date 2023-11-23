@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-#infdef MY_SEAT_CLASS
+#ifndef MY_SEAT_CLASS
 #define MY_SEAT_CLASS
 
 class Seat

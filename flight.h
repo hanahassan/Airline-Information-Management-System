@@ -1,9 +1,8 @@
 #include <iostream>
 #include <string>
-
 using namespace std;
 
-#infdef 
+#ifndef
 #define 
 
 class Seat
