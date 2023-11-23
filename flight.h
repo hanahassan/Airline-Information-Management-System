@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+
 using namespace std;
 
 #infdef 
@@ -7,7 +9,11 @@ using namespace std;
 class Seat
 {
     private:
-        
+        string id;
+        int num_rows;
+        int num_columns;
+        vector <passenger>passengets;
+        vector
     public:
         
 }

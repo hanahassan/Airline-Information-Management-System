@@ -10,9 +10,9 @@ class Passenger
     private:
         string first_name;
         string last_name;
-        int phone_number;
+        string phone_number;
         int iD_passenger;
-        char * seat_passenger; 
+        seat * seat_passenger; 
     public:
         int Passenger(): first_name("NA"), last_name("NA"), phone_number(0), id(0), seat(nullptr);
         int Passenger(string first, string last, int phonenumber, int iD, char * seat);
