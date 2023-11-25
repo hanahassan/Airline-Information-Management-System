@@ -4,8 +4,8 @@
 #include "flight.h"
 using namespace std;
 
-#if(1)
-#define 
+#ifndef airline_class
+#define airline_class
 
 class Airline
 {
@@ -16,7 +16,8 @@ class Airline
     public:
         void set_name(string name) const;
         string get_name();
-        int num_flights(vector <Flight> flights);
+        Airline(string airline_name, );
+        int num_flights(const vector <Flight> &flights);
         
 }
 
