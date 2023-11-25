@@ -16,8 +16,9 @@ class Airline
     public:
         void set_name(string name) const;
         string get_name();
-        Airline(string airline_name, );
-        int num_flights(const vector <Flight> &flights);
+        int num_flights(const vector <Flight>& flights);
+        void set_flights(const vector<Flight>& flights);
+        vector<Flight> get_flights() const;
         
 }
 
