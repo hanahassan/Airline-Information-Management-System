@@ -11,7 +11,7 @@ class Seat
         char columnM;
         char statusM;
     public:
-        Seat(): rowM(1), columnM('A'), status('NA') {}
+        Seat(): rowM(1), columnM('A'), statusM('NA') {}
         Seat(int row, char column, char status);
         int get_row() const;
         char get_column() const;
