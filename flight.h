@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "seat.h"
+#include "passenger.h"
 using namespace std;
 
 

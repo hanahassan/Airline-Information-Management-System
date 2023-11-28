@@ -37,7 +37,6 @@ void displayHeader(){
 int main(){
     //Flight f;
     displayHeader();
-    pressEnter();
     //f = populate_flight("flight_info.txt");
     int choice = 1;
    /* while choice(choice !=0){
