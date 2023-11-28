@@ -21,6 +21,6 @@ class Airline
         vector<Flight> get_flights() const;
         void addFlight(const Flight& new_flight);
         
-}
+};
 
 #endif
