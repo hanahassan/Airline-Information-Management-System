@@ -8,7 +8,7 @@ string Airline::get_name(){
     return name;
 }
 
-int num_flights(const vector<Flight> &flights){
+int number_flights(const vector<Flight> &flight_num){
     return flights.size();
 }
 
@@ -17,7 +17,7 @@ vector<Flight> Airline::get_flights() const
     return flights;
 }
 
-void Airline::set_flights(const vector<Flight>& flights)
+void Airline::set_flights(const vector<Flight>& flight)
 {
     this->flights = flights;
 }
