@@ -92,4 +92,11 @@ void Flight::displaySeatMap() const
     }
 }
 
+void Flight::cleanStandardInputStream()
+{
+    int leftover;
+    do{
+        leftover = cin.get();
+    }while (leftover != '\n' && leftover != EOF)
+}
 

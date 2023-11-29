@@ -41,6 +41,9 @@ public:
     // Function to display the seat map
     void displaySeatMap() const;
 
+    // Function to clean buffer
+    void cleanStandardInputStream(void);
+
 };
 
 #endif
