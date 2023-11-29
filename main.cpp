@@ -1,17 +1,14 @@
 #include "main.h"
-#include "flight.h"
-#include "passenger.h"
-#include "seat.h"
-#include "airline.h"
-
 using namespace std;
 
 
 void pressEnter() {
-    cout << "Press Enter to continue...";
+    cout << "<< Press Enter to Continue >>";
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin.get();
 }
+
+
 
 int menu(){
     int choice = 1;
@@ -35,11 +32,11 @@ void displayHeader(){
 }
 
 int main(){
-    //Flight f;
+    Flight f;
     displayHeader();
-    //f = populate_flight("flight_info.txt");
+    f = populate_flight("flight_info.txt");
     int choice = 1;
-   /* while choice(choice !=0){
+    /*while (choice !=0){
         switch(menu()){
             case 1:
                 f.show_seat_map();
@@ -47,14 +44,14 @@ int main(){
                 break;
             
             case 2:
-                displayPassenger();
+                f.displayPassenger();
                 pressEnter();
                 break;
             
             case 3:
-            add_Passenger();
-            pressEnter();
-            break;
+                f.add_Passenger();
+                pressEnter();
+                break;
 
         }
     }*/

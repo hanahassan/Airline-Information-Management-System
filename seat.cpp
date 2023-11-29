@@ -31,3 +31,13 @@ void Seat::set_status(char status)
 {
     statusM = status;
 }
+
+bool Seat::isOccupied() const 
+{
+    return occupied;
+}
+
+void Seat::assignPassenger(const Passenger& passenger){
+    this-> passenger = passenger;
+    occupied = true;
+}

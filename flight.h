@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "seat.h"
 #include "passenger.h"
+#include "seat.h"
 using namespace std;
 
 
@@ -40,6 +40,7 @@ public:
 
     // Function to display the seat map
     void displaySeatMap() const;
+
 };
 
 #endif
