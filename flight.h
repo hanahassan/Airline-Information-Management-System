@@ -44,6 +44,9 @@ public:
     //Fucntion to populate_flight
     populate_flight(const string& filename);
 
+    // Function to clean buffer
+    void cleanStandardInputStream(void);
+
 };
 
 #endif
