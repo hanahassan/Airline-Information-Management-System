@@ -1,6 +1,7 @@
 #include "Flight.h"
+#include "main.h"
 
-Flight::Flight() : idM(""), num_rowsM(0), num_columnsM(0)
+Flight::Flight() : idM(0), num_rowsM(0), num_columnsM(0)
 {
     seatmap.resize(num_rowsM, vector<Seat>(num_columnsM));
 }
@@ -90,3 +91,5 @@ void Flight::displaySeatMap() const
         cout << endl;
     }
 }
+
+

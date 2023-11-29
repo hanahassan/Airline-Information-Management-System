@@ -40,6 +40,7 @@ public:
 
     // Function to display the seat map
     void displaySeatMap() const;
+
 };
 
 #endif
