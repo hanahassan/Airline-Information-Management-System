@@ -91,5 +91,3 @@ void Flight::displaySeatMap() const
         cout << endl;
     }
 }
-
-

@@ -1,6 +1,10 @@
 #include "Passenger.h"
 
-Seat::Seat(int row, char column, char status) : rowM(row), columnM(column), statusM(status) {}
+// Seat::Seat(int row, char column, char status) : rowM(row), columnM(column), statusM(status) {}
+
+Passenger::Passenger(string first, string last, string phonenumber, int iD, int seatNumber): first_nameM(first), last_nameM(last), phone_numberM(phonenumber), iDM(iD) {
+    seat_passengerM = new Seat(seatNumber);
+}
 
 string Passenger::get_firstnameM() const
 {

@@ -25,7 +25,7 @@ class Seat
         bool isOccupied() const;
 
         //Function to assign a passenger to the seat
-        void assignPassenger(const Passenger& passenger)
+        //void assignPassenger(const Passenger& passenger);
 };
 
 #endif

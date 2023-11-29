@@ -1,4 +1,5 @@
 #include "main.h"
+#include <fstream>
 using namespace std;
 
 
@@ -30,6 +31,36 @@ void displayHeader(){
     cout<< "Term Project - Flight Mangement Program in C++\n";
     cout<< "Produced by: Kamand Ghorbanzadeh, Hana Hassan, Hasnain Haider\n";
 }
+
+
+Flight populate_flight(const string& filename) {
+    ifstream file(filename);
+    if (!file.is_open()) {
+        cerr << "Error opening file: " << filename << std::endl;
+        exit(EXIT_FAILURE);
+    }
+
+    std::string id;
+    int rows, columns;
+    file >> id >> rows >> columns;
+
+    Flight flight(id, rows, columns);
+
+    while (!file.eof()) {
+        std::string firstName, lastName, phoneNumber;
+        int idM, seatNumber;
+
+        file >> firstName >> lastName >> phoneNumber >> idM >> seatNumber;
+
+        Passenger passenger(firstName, lastName, phoneNumber, idM, seatNumber);
+        flight.addPassenger(passenger);
+    }
+
+    file.close();
+
+    return flight;
+}
+
 
 int main(){
     Flight f;

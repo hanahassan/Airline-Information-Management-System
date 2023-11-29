@@ -14,12 +14,13 @@ class Airline
         vector <Flight> flights;
         int num_flights;
     public:
+    
         void set_name(string airline_name) const;
         string get_name();
         int number_flights(const vector <Flight>& flight_num);
         void set_flights(const vector <Flight>& flight);
-        vector<Flight> get_flightsff const;
-        void addFlight(Flight& new_flight)
+        vector<Flight> get_flightsff() const;
+        void addFlight(Flight& new_flight);
         
 };
 

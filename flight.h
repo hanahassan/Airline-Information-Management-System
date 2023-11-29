@@ -41,6 +41,9 @@ public:
     // Function to display the seat map
     void displaySeatMap() const;
 
+    //Fucntion to populate_flight
+    populate_flight(const string& filename);
+
 };
 
 #endif
