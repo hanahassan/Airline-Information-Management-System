@@ -18,8 +18,8 @@ class Airline
         string get_name();
         int number_flights(const vector <Flight>& flight_num);
         void set_flights(const vector <Flight>& flight);
-        vector<Flight> get_flights() const;
-        void addFlight(Flight& new_flight);
+        vector<Flight> get_flightsff const;
+        void addFlight(Flight& new_flight)
         
 };
 
