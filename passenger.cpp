@@ -1,57 +1,56 @@
-#include "Passenger.h"
+#include "passenger.h"
 
-// Seat::Seat(int row, char column, char status) : rowM(row), columnM(column), statusM(status) {}
-
-Passenger::Passenger(string first, string last, string phonenumber, int iD, int seatNumber): first_nameM(first), last_nameM(last), phone_numberM(phonenumber), iDM(iD) {
-    seat_passengerM = new Seat(seatNumber);
+// Constructor implementation
+Passenger::Passenger(int id, const string& firstName, const string& lastName, const string& phoneNumber, const string& seat, int seatNumber)
+    : id(id), firstName(firstName), lastName(lastName), phoneNumber(phoneNumber), seat(seat), seatNumber(seatNumber) {
 }
 
-string Passenger::get_firstnameM() const
-{
-    return first_nameM;
+// Getter implementations
+int Passenger::getID() const{
+    return id;
 }
 
-string Passenger::get_lastnameM() const
-{
-    return last_nameM;
+string Passenger::getFirstName() const {
+    return firstName;
 }
 
-string Passenger::get_phonenumberM() const
-{
-    return phone_numberM;
+string Passenger::getLastName() const {
+    return lastName;
 }
 
-int Passenger::get_iDM() const
-{
-    return iDM;
+string Passenger::getPhoneNumber() const {
+    return phoneNumber;
 }
 
-Seat* Passenger::get_seatpassengerM() const
-{
-    return seat_passengerM;
+string Passenger::getSeat() const {
+    return seat;
 }
 
-void Passenger::set_firstnameM(string first)
-{
-    first_nameM = first;
+int Passenger::getSeatNumber() const {
+    return seatNumber;
 }
 
-void Passenger::set_lastnameM(string last)
-{
-    last_nameM = last;
+// Setter implementations (if needed)
+void Passenger::setID(int id){
+    this->id = id;
 }
 
-void Passenger::set_phonenumberM(string phone)
-{
-    phone_numberM = phone;
+void Passenger::setFirstName(const string& firstName) {
+    this->firstName = firstName;
 }
 
-void Passenger::set_iDM(int id)
-{
-    iDM = id;
+void Passenger::setLastName(const string& lastName) {
+    this->lastName = lastName;
 }
 
-void Passenger::set_seatpassengerM(Seat* seat)
-{
-    seat_passengerM = seat;
+void Passenger::setPhoneNumber(const string& phoneNumber) {
+    this->phoneNumber = phoneNumber;
+}
+
+void Passenger::setSeat(const string& seat) {
+    this->seat = seat;
+}
+
+void Passenger::setSeatNumber(int seatNumber) {
+    this->seatNumber = seatNumber;
 }

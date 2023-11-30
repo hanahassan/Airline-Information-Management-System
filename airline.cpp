@@ -1,29 +1,25 @@
 #include "airline.h"
 
-void Airline::set_name(string airline_name){
+void Airline::set_name(std::string airline_name) {
     name = airline_name;
 }
 
-string Airline::get_name(){
+std::string Airline::get_name() const {
     return name;
 }
 
-int number_flights(const vector<Flight> &flight_num){
+int Airline::number_flights() const {
     return flights.size();
 }
 
-vector<Flight> Airline::get_flights() const
-{
+void Airline::set_flights(const std::vector<Flight>& flight) {
+    this->flights = flight;
+}
+
+std::vector<Flight> Airline::get_flights() const {
     return flights;
 }
 
-void Airline::set_flights(const vector<Flight>& flight)
-{
-    this->flights = flights;
-}
-
-void Airline::addFlight(const Flight& new_flight)
-{
+void Airline::addFlight(const Flight& new_flight) {
     flights.push_back(new_flight);
-
 }

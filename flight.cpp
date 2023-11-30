@@ -1,102 +1,130 @@
-#include "Flight.h"
-#include "main.h"
+#include "flight.h"
 
-Flight::Flight() : idM(0), num_rowsM(0), num_columnsM(0)
-{
-    seatmap.resize(num_rowsM, vector<Seat>(num_columnsM));
+// Default constructor
+Flight::Flight() : num_rowsM(0), num_columnsM(0) {
 }
 
-Flight::Flight(string id, int rows, int columns) : idM(id), num_rowsM(rows), num_columnsM(columns)
-{
-    seatmap.resize(num_rowsM, vector<Seat>(num_columnsM));
+// Parameterized constructor
+Flight::Flight(string id, int rows, int columns) : idM(id), num_rowsM(rows), num_columnsM(columns) {
 }
 
-string Flight::get_idM() const
-{
+// Copy constructor - idk if we need this?
+Flight::Flight(const Flight& source) : idM(source.idM), num_rowsM(source.num_rowsM), num_columnsM(source.num_columnsM) {
+    // Implement copying for other members if needed
+}
+
+// Destructor - idk if we need this?
+Flight::~Flight() {
+    // Implement any necessary cleanup
+}
+
+// Getter functions
+string Flight::get_idM() const {
     return idM;
 }
 
-int Flight::get_rowsM() const
-{
+int Flight::get_rowsM() const {
     return num_rowsM;
 }
 
-int Flight::get_columnsM() const
-{
+int Flight::get_columnsM() const {
     return num_columnsM;
 }
 
-vector<Passenger> Flight::get_passengers() const
-{
+vector<Passenger> Flight::get_passengers() const {
     return passengers;
 }
 
-vector<vector<Seat>> Flight::get_seatmap() const
-{
+vector<vector<Seat>> Flight::get_seatmap() const {
     return seatmap;
 }
 
-void Flight::set_idM(string id)
-{
+// Setter functions
+void Flight::set_idM(string id) {
     idM = id;
 }
 
-void Flight::set_numrowsM(int rows)
-{
+void Flight::set_numrowsM(int rows) {
     num_rowsM = rows;
 }
 
-void Flight::set_numcolumnsM(int columns)
-{
+void Flight::set_numcolumnsM(int columns) {
     num_columnsM = columns;
 }
 
-void Flight::set_passengers(const vector<Passenger>& passengers)
-{
+void Flight::set_passengers(const vector<Passenger>& passengers) {
     this->passengers = passengers;
 }
 
-void Flight::set_seatmap(const vector<vector<Seat>>& seatmap)
-{
-    this->seatmap = seatmap;
-}
+void Flight::populate_flight(const string& filename) {
+    ifstream file(filename);
 
-void Flight::addPassenger(const Passenger& passenger)
-{
+    if (!file.is_open()) {
+        cerr << "Error: Could not open file " << filename << endl;
+        return;
+    }
+
+    // Read flight information from the first line
+    string flightInfoLine;
+    getline(file, flightInfoLine);
+    istringstream flightInfoStream(flightInfoLine);
+
+    string flightNumber;
+    int rows, columns;
+    flightInfoStream >> flightNumber >> rows >> columns;
+
+    set_idM(flightNumber);
+    set_numrowsM(rows);
+    set_numcolumnsM(columns);
+
+    // Read passenger information from the remaining lines
+    string line;
+    while (getline(file, line)) {
+        istringstream passengerInfoStream(line);
+
+        string firstName, lastName, phoneNumber, seat;
+        int id, seatNumber;
+
+        passengerInfoStream >> id >> firstName >> lastName >> phoneNumber >> seat >> seatNumber;
+
+        // Create a Passenger object and add it to the flight
+        Passenger passenger(id, firstName, lastName, phoneNumber, seat, seatNumber);
+        add_passenger(passenger);
+    }
+
+    file.close();
+}
+// Function to add a passenger to the flight
+void Flight::add_passenger(const Passenger& passenger) {
     passengers.push_back(passenger);
-
-    for (int i = 0; i < num_rowsM; ++i)
-    {
-        for (int j = 0; j < num_columnsM; ++j)
-        {
-            if (!seatmap[i][j].isOccupied())
-            {
-                seatmap[i][j].assignPassenger(passenger);
-                return;
-            }
-        }
-    }
-
-    cout << "No available seats." << endl;
 }
 
-void Flight::displaySeatMap() const
-{
-    for (int i = 0; i < num_rowsM; ++i)
-    {
-        for (int j = 0; j < num_columnsM; ++j)
-        {
-            cout << seatmap[i][j].getSeatInfo() << " ";
-        }
-        cout << endl;
+// Function to display passenger information
+void Flight::display_passengers() const {
+
+    for (const Passenger& passenger : passengers) {
+        cout << "ID: " << passenger.getID() << "\n";
+        cout << "First Name: " << passenger.getFirstName() << "\n";
+        cout << "Last Name: " << passenger.getLastName() << "\n";
+        cout << "Phone Number: " << passenger.getPhoneNumber() << "\n";
+        cout << "Seat: " << passenger.getSeat() << "\n";
+        cout << "Row: " << passenger.getSeatNumber() << "\n";
+        cout << "---------------------------\n";
     }
 }
 
-void Flight::cleanStandardInputStream()
-{
-    int leftover;
-    do{
-        leftover = cin.get();
-    }while (leftover != '\n' && leftover != EOF)
-}
 
+// Function to display the seat map
+// void Flight::displaySeatMap() const {
+//     Implement as needed
+// }
+
+// Function to populate_flight
+// void Flight::populate_flight(const string& filename) {
+//     Implement as needed
+// }
+
+// Function to clean buffer
+// void Flight::cleanStandardInputStream(void) {
+//     Implement as needed
+// }

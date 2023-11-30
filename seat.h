@@ -1,4 +1,5 @@
 #include <iostream>
+#include "passenger.h"
 using namespace std;
 
 #ifndef MY_SEAT_CLASS
@@ -25,7 +26,7 @@ class Seat
         bool isOccupied() const;
 
         //Function to assign a passenger to the seat
-        //void assignPassenger(const Passenger& passenger);
+        void assignPassenger(const Passenger& passenger);
 };
 
 #endif

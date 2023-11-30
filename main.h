@@ -1,24 +1,20 @@
-#include <iostream>
 #include <limits>
+#include <fstream>
 #include "flight.h"
-#include "passenger.h"
-#include "seat.h"
-#include "airline.h"
 using namespace std;
-
 
 #ifndef MAIN_H
 #define MAIN_H
+void displayHeader();
 
 int menu();
 
-void displayHeader();
-
 void pressEnter();
 
-void isOccupied();
+void cleanStandardInputStream();
+
+void quit();
+
+void populate_flight(const string& filename);
 
 #endif
-
-
-

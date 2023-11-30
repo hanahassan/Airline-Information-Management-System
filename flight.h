@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
+#include <sstream>
 #include "passenger.h"
 #include "seat.h"
 using namespace std;
@@ -20,8 +22,10 @@ private:
 
 public:
     Flight();
-
     Flight(string id, int rows, int columns);
+    Flight(const Flight& source);
+
+    ~Flight();
 
     string get_idM() const;
     int get_rowsM() const;
@@ -33,19 +37,21 @@ public:
     void set_numrowsM(int rows);
     void set_numcolumnsM(int columns);
     void set_passengers(const vector<Passenger>& passengers);
-    void set_seatmap(const vector<vector<Seat>>& seatmap);
+    //void set_seatmap(const vector<vector<Seat>>& seatmap);
 
     // Function to add a passenger to the flight
-    void addPassenger(const Passenger& passenger);
+    void add_passenger(const Passenger& passenger);
 
     // Function to display the seat map
-    void displaySeatMap() const;
+    //void displaySeatMap() const;
 
-    //Fucntion to populate_flight
-    populate_flight(const string& filename);
+    //Function to populate_flight
+    void populate_flight(const string& filename);
 
-    // Function to clean buffer
-    void cleanStandardInputStream(void);
+    //Function to display passenger information
+    void display_passengers() const;
+
+    
 
 };
 
