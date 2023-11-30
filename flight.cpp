@@ -57,20 +57,19 @@ void Flight::set_passengers(const vector<Passenger>& passengers) {
 }
 
 void Flight::populate_flight(const string& filename) {
-    ifstream file(filename);
+     ifstream file(filename);
 
-    if (!file.is_open()) {
-        cerr << "Error: Could not open file " << filename << endl;
-        return;
-    }
+     if (!file.is_open()) {
+         cerr << "Error: Could not open file " << filename << endl;
+         return;
+     }
 
-    // Read flight information from the first line
-    string flightInfoLine;
-    getline(file, flightInfoLine);
-    istringstream flightInfoStream(flightInfoLine);
-
-    string flightNumber;
-    int rows, columns;
+     // Read flight information from the first line
+     string flightInfoLine;
+     getline(file, flightInfoLine);
+     istringstream flightInfoStream(flightInfoLine);
+     string flightNumber;
+     int rows, columns;
     flightInfoStream >> flightNumber >> rows >> columns;
 
     set_idM(flightNumber);
@@ -93,6 +92,7 @@ void Flight::populate_flight(const string& filename) {
     }
 
     file.close();
+    //return f;
 }
 // Function to add a passenger to the flight
 void Flight::add_passenger(const Passenger& passenger) {

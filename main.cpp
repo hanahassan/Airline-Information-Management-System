@@ -37,8 +37,6 @@ void cleanStandardInputStream() {
 
 void quit() {
     cout << "Terminating the program. Goodbye!\n";
-
-    // Exit the program
     exit(0);
 }
 
@@ -46,7 +44,7 @@ int main(){
     Flight f;
     displayHeader();
     cleanStandardInputStream();
-    f.populate_flight("flight_info.txt");
+    f = populate_flight("flight_info.txt");
     int choice = 1;
     while (choice !=0){
         switch(menu()){
