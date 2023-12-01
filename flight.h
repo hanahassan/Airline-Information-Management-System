@@ -46,7 +46,7 @@ public:
     //void displaySeatMap() const;
 
     //Function to populate_flight
-    void populate_flight(const string& filename);
+    //void populate_flight(const string& filename);
 
     //Function to display passenger information
     void display_passengers() const;

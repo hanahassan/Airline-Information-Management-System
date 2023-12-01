@@ -25,9 +25,11 @@ int menu(){
 }
 
 void pressEnter() {
-    cout << "<< Press Enter to Continue >>";
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    cin.get();
+    cout << "<< Press Enter to Continue >> " << flush;
+    cin.clear(); // Clear any remaining errors or flags
+
+    // Wait for a newline character
+    while (cin.get() != '\n') {}
 }
 
 void cleanStandardInputStream() {
@@ -97,7 +99,8 @@ void quit() {
 int main(){
     //Flight f;
     displayHeader();
-    Flight f = populate_flight("flight_info.txt");
+    cleanStandardInputStream();
+    f = populate_flight("flight_info.txt");
     int choice = 1;
     while (choice !=0){
         switch(menu()){
