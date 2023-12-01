@@ -89,9 +89,11 @@ int menu(){
 }
 
 void pressEnter() {
-    cout << "<< Press Enter to Continue >>";
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    cin.get();
+    cout << "<< Press Enter to Continue >> " << flush;
+    cin.clear(); // Clear any remaining errors or flags
+
+    // Wait for a newline character
+    while (cin.get() != '\n') {}
 }
 
 void cleanStandardInputStream() {
