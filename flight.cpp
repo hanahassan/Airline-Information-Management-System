@@ -56,44 +56,45 @@ void Flight::set_passengers(const vector<Passenger>& passengers) {
     this->passengers = passengers;
 }
 
-void Flight::populate_flight(const string& filename) {
-     ifstream file(filename);
+// void Flight::populate_flight(const string& filename) {
+//      ifstream file(filename);
 
-     if (!file.is_open()) {
-         cerr << "Error: Could not open file " << filename << endl;
-         return;
-     }
+//      if (!file.is_open()) {
+//          cerr << "Error: Could not open file " << filename << endl;
+//          return;
+//      }
 
-     // Read flight information from the first line
-     string flightInfoLine;
-     getline(file, flightInfoLine);
-     istringstream flightInfoStream(flightInfoLine);
-     string flightNumber;
-     int rows, columns;
-    flightInfoStream >> flightNumber >> rows >> columns;
+//      // Read flight information from the first line
+//      string flightInfoLine;
+//      getline(file, flightInfoLine);
+//      istringstream flightInfoStream(flightInfoLine);
+//      string flightNumber;
+//      int rows, columns;
+//     flightInfoStream >> flightNumber >> rows >> columns;
 
-    set_idM(flightNumber);
-    set_numrowsM(rows);
-    set_numcolumnsM(columns);
+//     set_idM(flightNumber);
+//     set_numrowsM(rows);
+//     set_numcolumnsM(columns);
 
-    // Read passenger information from the remaining lines
-    string line;
-    while (getline(file, line)) {
-        istringstream passengerInfoStream(line);
+//     // Read passenger information from the remaining lines
+//     string line;cd 
+//     while (getline(file, line)) {
+//         istringstream passengerInfoStream(line);
 
-        string firstName, lastName, phoneNumber, seat;
-        int id, seatNumber;
+//         string firstName, lastName, phoneNumber, seat;
+//         int id, seatNumber;
 
-        passengerInfoStream >> id >> firstName >> lastName >> phoneNumber >> seat >> seatNumber;
+//         passengerInfoStream >> id >> firstName >> lastName >> phoneNumber >> seat >> seatNumber;
 
-        // Create a Passenger object and add it to the flight
-        Passenger passenger(id, firstName, lastName, phoneNumber, seat, seatNumber);
-        add_passenger(passenger);
-    }
+//         // Create a Passenger object and add it to the flight
+//         Passenger passenger(id, firstName, lastName, phoneNumber, seat, seatNumber);
+//         add_passenger(passenger);
+//     }
 
-    file.close();
-    //return f;
-}
+//     file.close();
+//     //return f;
+// }
+
 // Function to add a passenger to the flight
 void Flight::add_passenger(const Passenger& passenger) {
     passengers.push_back(passenger);
