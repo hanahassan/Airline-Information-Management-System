@@ -1,5 +1,69 @@
 #include "main.h"
 
+void populate_flight(Flight& f) {
+    ifstream inFile;
+    string fileName;
+
+    cout << "Enter the name of your file in this format \"file_name.txt\": ";
+    cin >> fileName;
+    inFile.open(fileName);
+
+    if (!inFile.is_open()) {
+        cerr << "Error: Could not open file " << fileName << endl;
+        return;
+    }
+
+    // Read flight information from the first line
+    string flightInfoLine;
+    getline(inFile, flightInfoLine);
+    istringstream flightInfoStream(flightInfoLine);
+
+    string flightNumber;
+    int rows, columns;
+    flightInfoStream >> flightNumber >> rows >> columns;
+
+    f.set_idM(flightNumber);
+    f.set_numrowsM(rows);
+    f.set_numcolumnsM(columns);
+
+    // Read passenger information from the remaining lines
+    string line;
+    while (getline(inFile, line)) {
+        istringstream passengerInfoStream(line);
+
+        // Read first name
+        string firstName;
+        passengerInfoStream >> firstName;
+
+        // Read middle/last name
+        string lastName;
+        string middleName;
+        while (passengerInfoStream >> middleName) {
+            // If it's a number (ID), break
+            if (isdigit(middleName[0])) {
+                break;
+            }
+            lastName += (lastName.empty() ? "" : " ") + middleName;
+        }
+
+        // Read phone number, row, seat, and ID
+        string phoneNumber, seat;
+        int row, id;
+        passengerInfoStream >> phoneNumber >> seat >> id;
+
+        // Separate row and seat from the combined information
+        size_t lastDigitIndex = seat.find_last_of("0123456789");
+        row = stoi(seat.substr(0, lastDigitIndex + 1));
+        char column = seat.back();
+
+        // Create a Passenger object and add it to the flight
+        Passenger newPassenger(id, firstName, lastName, phoneNumber, seat, row);
+        f.add_passenger(newPassenger);
+    }
+
+    inFile.close();
+}
+
 void displayHeader(){
     cout<< "Version: 1.0\n";
     cout<< "Term Project - Flight Mangement Program in C++\n";
@@ -44,7 +108,13 @@ int main(){
     Flight f;
     displayHeader();
     cleanStandardInputStream();
-    f = populate_flight("flight_info.txt");
+    populate_flight(f);
+
+    //delete this later just testing to see it works
+    cout << "\nPassengers after populating the flight:\n";
+    f.display_passengers();
+    //delete ^^
+
     int choice = 1;
     while (choice !=0){
         switch(menu()){

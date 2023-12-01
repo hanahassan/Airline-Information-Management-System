@@ -15,6 +15,6 @@ void cleanStandardInputStream();
 
 void quit();
 
-void populate_flight(const string& filename);
+void populate_flight(Flight& f);
 
 #endif
