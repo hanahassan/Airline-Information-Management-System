@@ -105,11 +105,16 @@ void quit() {
     exit(0);
 }
 
-int main(){
-    //Flight f;
+int main() {
+    Flight f;
     displayHeader();
     cleanStandardInputStream();
-    f = populate_flight("flight_info.txt");
+    populate_flight(f);
+    
+    cout << "\nPassengers after populating the flight:\n";
+    f.display_passengers();
+
+
     int choice = 1;
     while (choice != 0) {
         switch (menu()) {
@@ -128,7 +133,7 @@ int main(){
                 int id, row;
 
                 // Get passenger information from the user
-                cout << "Please enter the passenger id (in this form XXXXX): ";
+                cout << "Please enter the passenger id: ";
                 cin >> id;
                 cleanStandardInputStream();
                 cout << "Please enter the passenger first name: ";
@@ -137,7 +142,7 @@ int main(){
                 cout << "Please enter the passenger last name: ";
                 cin >> lastName;
                 cleanStandardInputStream();
-                cout << "Please enter the passenger phone number (in this format XXX XXX XXXX): ";
+                cout << "Please enter the passenger phone number: ";
                 cin >> phoneNumber;
                 cleanStandardInputStream();
                 cout << "Enter the passenger's desired row: ";

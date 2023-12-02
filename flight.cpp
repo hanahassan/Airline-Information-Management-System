@@ -59,23 +59,8 @@ void Flight::set_passengers(const vector<Passenger>& passengers) {
 }
 
 // Function to add a passenger to the flight
-void Flight::add_passenger(const Passenger& newPassenger) {
-    // Check if the seat is within the valid range
-    if (newPassenger.get_columnsM() < 1 || newPassenger.get_rowsM() > num_rowsM ||
-        newPassenger.getSeatCol() < 'A' || newPassenger.getSeatCol() > static_cast<char>('A' + num_columnsM - 1)) {
-        cerr << "Error: Invalid seat. Please enter a valid seat.\n";
-        return;
-    }
-
-    // Check if the seat is already occupied
-    if (is_seat_occupied(newPassenger.getSeatRow(), newPassenger.getSeatCol())) {
-        cerr << "Error: Seat is already occupied. Please choose another seat.\n";
-        return;
-    }
-
-    // If all checks pass, add the passenger
-    passengers.push_back(newPassenger);
-    cout << "Passenger added successfully!\n";
+void Flight::add_passenger(const Passenger& passenger) {
+    passengers.push_back(passenger);
 }
 
 // Function to display passenger information
