@@ -1,3 +1,5 @@
+//seap.cpp
+
 #include "seat.h"
 
 Seat::Seat(int row, char column, char status) : rowM(row), columnM(column), statusM(status) {}

@@ -1,3 +1,5 @@
+//seat.h
+
 #include <iostream>
 #include "passenger.h"
 using namespace std;
