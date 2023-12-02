@@ -1,8 +1,10 @@
+// passenger.cpp
+
 #include "passenger.h"
 
 // Constructor implementation
-Passenger::Passenger(int id, const string& firstName, const string& lastName, const string& phoneNumber, const string& seat, int seatNumber): id(id), firstName(firstName), lastName(lastName + " " + firstName),
-// Concatenate middle name to last name
+Passenger::Passenger(int id, const string& firstName, const string& lastName, const string& phoneNumber, 
+    const string& seat, int seatNumber): id(id), firstName(firstName), lastName(lastName),
       phoneNumber(phoneNumber), seat(seat), seatNumber(seatNumber) {
 }
 

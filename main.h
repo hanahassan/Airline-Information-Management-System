@@ -1,3 +1,5 @@
+//main.h
+
 #include <limits>
 #include <fstream>
 #include "flight.h"
@@ -15,8 +17,6 @@ void cleanStandardInputStream();
 
 void quit();
 
-
-Flight populate_flight(const string& fileName);
-
+void populate_flight(Flight& f);
 
 #endif
