@@ -2,6 +2,12 @@
 #include <algorithm>
 #include "flight.h"
 #include <iomanip>
+#include <limits>
+#include <fstream>
+#include <string>
+#include "flight.h"
+using namespace std;
+
 
 // Default constructor
 Flight::Flight() : num_rowsM(0), num_columnsM(0) {
@@ -89,6 +95,76 @@ void Flight::remove_passenger(int passengerID) {
         cout << "Passenger with ID " << passengerID << " removed successfully.\n";
     } else {
         cout << "Passenger with ID " << passengerID << " not found.\n";
+    }
+}
+
+void Flight::save_info() {
+    char response;
+   
+    cout << "Do you want to save the data in the 'flight_info.txt'? Please answer < Y or N > ";
+    cin >> response;
+
+    if(response == 'Y' || response == 'y') {
+         std::ifstream inputFile("flight_info.txt");
+           if (!inputFile.is_open()) {
+        std::cerr << "Unable to open the file for reading." << std::endl;
+        
+    }
+     std::string firstLine;
+    std::getline(inputFile, firstLine);
+    inputFile.close();
+     std::ofstream outputFile("flight_info.txt", std::ios::trunc);
+    if (!outputFile.is_open()) {
+        std::cerr << "Unable to open the file for writing." << std::endl;
+       
+    }
+    outputFile << firstLine << std::endl;
+    outputFile.close();
+
+        ofstream outFile("flight_info.txt", ios::app);
+    
+
+        if (!outFile.is_open()) {
+            cerr << "Error: Could not open or create file flight_info.txt" << endl;
+            return;
+
+        }
+
+       
+
+
+        for (const Passenger& passenger : passengers) {
+        
+        string firstName = passenger.getFirstName();
+        firstName.resize(20,' ');
+        string lastName = passenger.getLastName();
+        lastName.resize(20,' ');
+        string phoneNumber = passenger.getPhoneNumber();
+        phoneNumber.resize(20,' ');
+        int row = passenger.getSeatNumber();
+        string rowNew = to_string(row);
+        string seatChar = passenger.getSeat();
+        string seatStr = rowNew+seatChar;
+        seatStr.resize(4,' ');
+        int id = passenger.getID();
+        string idNew = to_string(id);
+    
+
+   
+
+    // Write passenger details to the file
+    outFile << firstName<< lastName << phoneNumber << seatStr << id << '\n';
+    
+    // Write passenger details to the file
+    }
+
+       
+        outFile.close();
+
+        cout << "Flight information saved successfully.\n";
+    } else {
+        cout << "Okay, let's exit out" << endl;
+       
     }
 }
 

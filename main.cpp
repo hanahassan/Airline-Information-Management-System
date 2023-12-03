@@ -230,62 +230,13 @@ void add_passenger(Flight& f) {
     // Create a Passenger object and add it to the flight
     Passenger newPassenger(stoi(id), firstName, lastName, phoneNumber, seatStr, row);
     f.add_passenger(newPassenger);
-    ofstream outFile("flight_info.txt", ios::app);
-
-    if (!outFile.is_open()) {
-        cerr << "Error: Could not open or create file flight_info.txt" << endl;
-        return;
-    }
-
    
-    string inputData;   
-    firstName.resize(20,' ');
-    lastName.resize(20,' ');
-    phoneNumber.resize(20,' ');
-    string seatInfo = to_string(row)+seatStr;
-    seatInfo.resize(4,' ');
-
-
-    // Write passenger details to the file
-    outFile << firstName << lastName << phoneNumber << seatInfo << id << '\n';
-    
-    // Write passenger details to the file
-
-    // Close the file
-    outFile.close();
-
 }
 void pressEnter() {
-    cout << "<< Press Enter to Continue >> " << flush;
-    cin.clear(); // Clear any remaining errors or flags
+    std::cout << "Press Enter to continue...";
+    std::cin.get();
 
-    // Wait for a newline character
-    while (cin.get() != '\n') {}
 }
-void save_info(const Flight& f) {
-    char response;
-   
-    cout << "Do you want to save the data in the 'flight_info.txt'? Please answer < Y or N > ";
-    cin >> response;
-
-    if(response == 'Y' || response == 'y') {
-        ofstream outFile("flight_info.txt", ios::app);
-
-        if (!outFile.is_open()) {
-            cerr << "Error: Could not open or create file flight_info.txt" << endl;
-            return;
-        }
-
-       
-        outFile.close();
-
-        cout << "Flight information saved successfully.\n";
-    } else {
-        cout << "Okay, let's exit out" << endl;
-        pressEnter();
-    }
-}
-
 
 void cleanStandardInputStream() {
     cin.clear();
@@ -300,7 +251,6 @@ void quit() {
 int main() {
     Flight f;
     displayHeader();
-    cleanStandardInputStream();
     populate_flight(f);
 
     int choice = 1;
@@ -333,7 +283,7 @@ int main() {
                 break;
 
             case 5:
-                save_info(f);
+                f.save_info();
                 pressEnter();
                 break;
 

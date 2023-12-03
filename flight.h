@@ -52,6 +52,7 @@ public:
 
     //Function to display passenger information
     void display_passengers() const;
+    void save_info();
 
     void remove_passenger(int passengerID);
 
