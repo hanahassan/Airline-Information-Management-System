@@ -2,6 +2,7 @@
 
 #include "main.h"
 #include <string>
+#include <cstdlib>
 // #include "flight.h"  // Add this line
 // #include "passenger.h"  // Add this line
 
@@ -17,7 +18,7 @@ void populate_flight(Flight& f) {
 
     if (!inFile.is_open()) {
         cerr << "Error: Could not open file " << fileName << endl;
-        return;
+        exit(EXIT_FAILURE);
     }
 
     // Read flight information from the first line
@@ -232,7 +233,7 @@ void add_passenger(Flight& f) {
    
 }
 void pressEnter() {
-    std::cout << "Press Enter to continue...";
+    std::cout << "Press Enter to continue... ";
     std::cin.get();
 
 }
