@@ -108,10 +108,10 @@ void Flight::create_empty_seat_map() {
     }
 
     // Resize the seat map to the specified number of rows and columns
-    seatmap.resize(num_rowsM, vector<Seat>(num_columnsM));
+    seatmap.resize(num_rowsM + 1, vector<Seat>(num_columnsM));
 
     // Initialize each seat in the seat map
-    for (int i = 0; i < num_rowsM; ++i) {
+    for (int i = 0; i <= num_rowsM; ++i) {
         for (int j = 0; j < num_columnsM; ++j) {
             seatmap[i][j] = Seat(); // Assuming Seat has a default constructor
         }
@@ -126,10 +126,10 @@ void Flight::resize_seat_map(int rows, int columns) {
     }
 
     // Resize the seat map to the specified number of rows and columns
-    seatmap.resize(rows, vector<Seat>(columns));
+    seatmap.resize(rows + 1, vector<Seat>(columns));
 
     // Initialize each seat in the seat map
-    for (int i = 0; i < rows; ++i) {
+    for (int i = 0; i <= rows; ++i) {
         for (int j = 0; j < columns; ++j) {
             seatmap[i][j] = Seat(); // Assuming Seat has a default constructor
         }
@@ -163,13 +163,14 @@ void Flight::display_seat_map() const {
     cout << "+" << endl;
 
     // Display seat map content
-    for (int k = 0; k <= num_rowsM; k++) {  // Change the condition to include num_rowsM
+    for (int k = 0; k <= num_rowsM; k++) {
         cout << setw(3) << k;
         for (int l = 0; l < num_columnsM; l++) {
             cout << setw(2) << "|";
-            if (k < num_rowsM && seatmap[k][l].get_occupied()) {  // Check if k is within bounds before accessing seatmap
+            if (k <= (num_rowsM) && seatmap[k][l].get_occupied()) {  // Check if k is within bounds before accessing seatmap
                 cout << setw(2) << "X";
-            } else {
+            } 
+            else {
                 cout << setw(2) << "\0";
             }
         }

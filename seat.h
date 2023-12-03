@@ -15,7 +15,7 @@ class Seat
         char statusM;
         bool occupiedM;
     public:
-        Seat(): rowM(1), columnM('A'), statusM(0), occupiedM(false) {};
+        Seat(): rowM(1), columnM('A'), statusM(0), occupiedM(true) {};
         Seat(int row, char column, char status);
         int get_row() const;
         char get_column() const;
@@ -26,9 +26,7 @@ class Seat
         void set_status(char status);
         void set_occupied(bool occupied);
         
-
-        //Function to assign a passenger to the seat
-        //void assignPassenger(const Passenger& passenger);
+        void assignPassenger(const Passenger& passenger);
 };
 
 #endif

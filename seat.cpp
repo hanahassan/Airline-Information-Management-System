@@ -36,7 +36,6 @@ void Seat::set_occupied(bool occupied){
     occupiedM = occupied;
 }
 
-// void Seat::assignPassenger(const Passenger& passenger){
-//    //assignedPassenger = passenger;
-//     occupied = true;
-// }
+void Seat::assignPassenger(const Passenger& passenger){
+    
+}
