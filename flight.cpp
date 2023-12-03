@@ -167,7 +167,7 @@ void Flight::display_seat_map() const {
         cout << setw(3) << k;
         for (int l = 0; l < num_columnsM; l++) {
             cout << setw(2) << "|";
-            if (k < num_rowsM && seatmap[k][l].isOccupied()) {  // Check if k is within bounds before accessing seatmap
+            if (k < num_rowsM && seatmap[k][l].get_occupied()) {  // Check if k is within bounds before accessing seatmap
                 cout << setw(2) << "X";
             } else {
                 cout << setw(2) << "\0";

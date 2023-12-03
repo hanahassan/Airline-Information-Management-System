@@ -16,6 +16,10 @@ char Seat::get_status() const{
     return statusM;
 }
 
+bool Seat::get_occupied() const {
+    return occupiedM;
+}
+
 void Seat::set_row(int row){
     rowM = row;
 }
@@ -28,11 +32,11 @@ void Seat::set_status(char status){
     statusM = status;
 }
 
-bool Seat::isOccupied() const {
-    return occupied;
+void Seat::set_occupied(bool occupied){
+    occupiedM = occupied;
 }
 
-void Seat::assignPassenger(const Passenger& passenger){
-   //assignedPassenger = passenger;
-    occupied = true;
-}
+// void Seat::assignPassenger(const Passenger& passenger){
+//    //assignedPassenger = passenger;
+//     occupied = true;
+// }
