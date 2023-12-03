@@ -93,14 +93,10 @@ void Flight::remove_passenger(int passengerID) {
 
         if (it != passengers.end()) {
             passengers.erase(it, passengers.end());
-            std::cout << "Passenger with ID " << convertedID << " removed successfully.\n";
+            std::cout << "Passenger with ID " << passengerID << " removed successfully.\n";
         } else {
-            std::cout << "Passenger with ID " << convertedID << " not found.\n";
+            std::cout << "Passenger with ID " << passengerID << " not found.\n";
         }
-    } catch (const std::invalid_argument& e) {
-        std::cout << "Invalid input. Please enter a valid integer ID.\n";
-    } catch (const std::out_of_range& e) {
-        std::cout << "Invalid input. The entered ID is out of range.\n";
     }
 
 
