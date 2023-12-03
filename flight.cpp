@@ -1,5 +1,5 @@
 //flight.cpp
-
+#include <algorithm>
 #include "flight.h"
 #include <iomanip>
 

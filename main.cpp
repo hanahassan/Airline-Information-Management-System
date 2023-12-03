@@ -247,7 +247,7 @@ void add_passenger(Flight& f) {
 
 
     // Write passenger details to the file
-    outFile << firstName << lastName << phoneNumber << seatInfo << id;
+    outFile << firstName << lastName << phoneNumber << seatInfo << id << '\n';
     
     // Write passenger details to the file
 
