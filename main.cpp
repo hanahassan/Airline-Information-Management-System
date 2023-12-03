@@ -205,10 +205,10 @@ void add_passenger(Flight& f) {
             cin.clear();
             cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
             cout << "Invalid input. Please enter a valid integer." << endl;
-        } else if (row < 1 || row > 24) {
-            cout << "Invalid row number. Please enter a number between 1 and 24." << endl;
+        } else if (row < 0 || row > 24) {
+            cout << "Invalid row number. Please enter a number between 0 and 24." << endl;
         }
-    } while (row < 1 || row > 24);
+    } while (row < 0 || row > 24);
 
     // Get the number of columns from the flight
     int numColumns = f.get_columnsM();
