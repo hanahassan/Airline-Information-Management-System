@@ -12,18 +12,15 @@ class Seat
     private:
         int rowM;
         char columnM;
-        char statusM;
         bool occupiedM;
     public:
-        Seat(): rowM(1), columnM('A'), statusM(0), occupiedM(true) {};
-        Seat(int row, char column, char status);
+        Seat(): rowM(1), columnM('A'), occupiedM(false) {};
+        Seat(int row, char column, bool occupied);
         int get_row() const;
         char get_column() const;
-        char get_status() const;
         bool get_occupied() const;
         void set_row(int row);
         void set_column(char column);
-        void set_status(char status);
         void set_occupied(bool occupied);
         
         void assignPassenger(const Passenger& passenger);
