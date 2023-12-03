@@ -8,10 +8,19 @@ using namespace std;
 
 
 class Passenger {
-public:
+    private:
+    int id;
+    string firstName;
+    string lastName;
+    string phoneNumber;
+    string seat;
+    int seatNumber;
+    
+    public:
+    //Constructor
     Passenger(int id, const string& firstName, const string& lastName, const string& phoneNumber, const string& seat, int seatNumber);
 
-    // Getter functions
+    //Passenger getter functions
     int getID () const;
     string getFirstName() const;
     string getLastName() const;
@@ -19,7 +28,7 @@ public:
     string getSeat() const;
     int getSeatNumber() const;
 
-    // Setter functions (if needed)
+    //Passenger setter functions
     void setID(const int id); 
     void setFirstName(const string& firstName);
     void setLastName(const string& lastName);
@@ -27,13 +36,7 @@ public:
     void setSeat(const string& seat);
     void setSeatNumber(int seatNumber);
 
-private:
-    int id;
-    string firstName;
-    string lastName;
-    string phoneNumber;
-    string seat;
-    int seatNumber;
+
 };
 
 #endif 

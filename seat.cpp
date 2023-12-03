@@ -2,8 +2,10 @@
 
 #include "seat.h"
 
+// Constructor implementation
 Seat::Seat(int row, char column, bool occupied) : rowM(row), columnM(column), occupiedM(occupied) {}
 
+// Getter implementation
 int Seat::get_row() const{
     return rowM;
 }
@@ -16,6 +18,7 @@ bool Seat::get_occupied() const {
     return occupiedM;
 }
 
+// Setter implementation
 void Seat::set_row(int row){
     rowM = row;
 }
@@ -26,9 +29,4 @@ void Seat::set_column(char column){
 
 void Seat::set_occupied(bool occupied){
     occupiedM = occupied;
-}
-
-void Seat::assignPassenger(const Passenger& passenger){
-
-    
 }

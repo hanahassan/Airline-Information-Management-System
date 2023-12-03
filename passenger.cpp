@@ -8,7 +8,7 @@ Passenger::Passenger(int id, const string& firstName, const string& lastName, co
       phoneNumber(phoneNumber), seat(seat), seatNumber(seatNumber) {
 }
 
-// Getter implementations
+// Getter implementation
 int Passenger::getID() const{
     return id;
 }
@@ -33,7 +33,7 @@ int Passenger::getSeatNumber() const {
     return seatNumber;
 }
 
-// Setter implementations (if needed)
+// Setter implementations
 void Passenger::setID(int id){
     this->id = id;
 }
