@@ -2,6 +2,7 @@
 
 #include "flight.h"
 #include <iomanip>
+#include <algorithm>
 
 // Default constructor
 Flight::Flight() : num_rowsM(0), num_columnsM(0) {
@@ -81,7 +82,7 @@ void Flight::display_passengers() const {
 }
 
 void Flight::remove_passenger(int passengerID) {
-    auto it = std::remove_if(passengers.begin(), passengers.end(),
+    auto it = remove_if(passengers.begin(), passengers.end(),
                              [passengerID](const Passenger& passenger) { return passenger.getID() == passengerID; });
 
     if (it != passengers.end()) {
