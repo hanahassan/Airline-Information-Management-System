@@ -210,28 +210,40 @@ void add_passenger(Flight& f) {
         }
     } while (row < 1 || row > 24);
 
+    // Get the number of columns from the flight
+    int numColumns = f.get_columnsM();
+
     // Get passenger desired seat
     do {
-        cout << "Enter passenger's desired seat (A, B, C, D, E, or F): ";
+        cout << "Enter passenger's desired seat (";
+        for (char col = 'A'; col < 'A' + numColumns; ++col) {
+            cout << col << " ";
+        }
+        cout << "): ";
         cin >> seat;
 
         // Convert the entered character to uppercase for case-insensitivity
         seat = toupper(seat);
 
         // Check if input is a valid character
-        if (cin.fail() || (seat < 'A' || seat > 'F')) {
+        if (cin.fail() || (seat < 'A' || seat >= 'A' + numColumns)) {
             cin.clear(); // Clear error flag
             cin.ignore(numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
-            cout << "Invalid input. Please enter a valid seat character (A, B, C, D, E, or F)." << endl;
+            cout << "Invalid input. Please enter a valid seat character (";
+            for (char col = 'A'; col < 'A' + numColumns; ++col) {
+                cout << col << " ";
+            }
+            cout << ")." << endl;
         }
-    } while (seat < 'A' || seat > 'F');
-    string seatStr(1,seat);
+        } while (seat < 'A' || seat >= 'A' + numColumns);
+        string seatStr(1, seat);
+
 
     // Create a Passenger object and add it to the flight
     Passenger newPassenger(stoi(id), firstName, lastName, phoneNumber, seatStr, row);
-    f.add_passenger(newPassenger);
-   
+    f.add_passenger(newPassenger); 
 }
+
 void pressEnter() {
     std::cout << "Press Enter to continue... ";
     std::cin.get();
