@@ -275,7 +275,11 @@ int main() {
             }
 
             case 4:
-                // f.remove_passenger();
+                int passengerIDToRemove;
+                cout << "Enter the ID of the passenger you want to remove: ";
+                cin >> passengerIDToRemove;
+                f.remove_passenger(passengerIDToRemove);
+
                 pressEnter();
                 break;
 
