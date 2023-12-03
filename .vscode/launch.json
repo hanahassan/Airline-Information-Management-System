@@ -8,8 +8,13 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
+<<<<<<< HEAD
       "cwd": "/Users/hanahassan/Desktop/337/ENSF337_Final_Project",
       "program": "/Users/hanahassan/Desktop/337/ENSF337_Final_Project/build/Debug/outDebug",
+=======
+      "cwd": "/Users/hanahassan/Desktop/ENSF337_Final_Project-1",
+      "program": "/Users/hanahassan/Desktop/ENSF337_Final_Project-1/build/Debug/outDebug",
+>>>>>>> f8bde021ec84f038da8793328cfa0429162f205d
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

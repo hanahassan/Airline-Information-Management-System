@@ -56,7 +56,13 @@ public:
 
     void remove_passenger(int passengerID);
 
-    
+    // Function to create an empty seat map
+    void create_empty_seat_map();
+
+    // Function to resize the seat map
+    void resize_seat_map(int rows, int columns);
+
+    void display_seat_map() const;
 
 };
 

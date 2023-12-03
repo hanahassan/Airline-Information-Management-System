@@ -32,7 +32,7 @@ void populate_flight(Flight& f) {
     f.set_idM(flightNumber);
     f.set_numrowsM(rows);
     f.set_numcolumnsM(columns);
-
+    f.resize_seat_map(rows, columns);
     // Read passenger information from the remaining lines
     string line;
     while (getline(inFile, line)) {
@@ -85,7 +85,6 @@ void displayHeader() {
     cout << "Term Project - Flight Management Program in C++\n";
     cout << "Produced by: Kamand Ghorbanzadeh, Hana Hassan, Hasnain Haider\n";
     cout << "Year: 2023\n\n";
-    pressEnter();
 }
 
 int menu() {
@@ -257,7 +256,7 @@ int main() {
     while (choice != 0) {
         switch (menu()) {
             case 1:
-                // f.show_seat_map();
+                f.display_seat_map();
                 pressEnter();
                 break;
 
