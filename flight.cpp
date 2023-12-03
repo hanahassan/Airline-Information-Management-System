@@ -80,6 +80,17 @@ void Flight::display_passengers() const {
     }
 }
 
+void Flight::remove_passenger(int passengerID) {
+    auto it = std::remove_if(passengers.begin(), passengers.end(),
+                             [passengerID](const Passenger& passenger) { return passenger.getID() == passengerID; });
+
+    if (it != passengers.end()) {
+        passengers.erase(it, passengers.end());
+        cout << "Passenger with ID " << passengerID << " removed successfully.\n";
+    } else {
+        cout << "Passenger with ID " << passengerID << " not found.\n";
+    }
+}
 
 // Function to display the seat map
 // void Flight::displaySeatMap() const {
