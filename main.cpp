@@ -56,9 +56,18 @@ void populate_flight(Flight& f) {
             size_t lastDigitIndex = seat.find_last_of("0123456789");
             int row = stoi(seat.substr(0, lastDigitIndex + 1));
             char column = seat.back();
+            std::string resultString = "";
+
+    // Iterate through each character in the input string
+             for (char c : seat) {
+            if (std::isalpha(c)) {
+            // Add the alphabetic character to the result string
+            resultString += c;
+        }
+    }
 
             // Create a Passenger object and add it to the flight
-            Passenger newPassenger(id, firstName, lastName, phoneNumber, seat, row);
+            Passenger newPassenger(id, firstName, lastName, phoneNumber, resultString, row);
             f.add_passenger(newPassenger);
         } catch (const std::invalid_argument& e) {
             cerr << "Error: Invalid argument in stoi conversion. Check the input file format." << endl;
