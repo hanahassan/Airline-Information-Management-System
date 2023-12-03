@@ -19,4 +19,6 @@ void quit();
 
 void populate_flight(Flight& f);
 
+void save_info(const Flight& f);
+
 #endif

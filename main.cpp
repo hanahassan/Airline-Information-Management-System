@@ -1,6 +1,7 @@
 // main.cpp
 
 #include "main.h"
+#include <string>
 // #include "flight.h"  // Add this line
 // #include "passenger.h"  // Add this line
 
@@ -225,6 +226,7 @@ void add_passenger(Flight& f) {
         }
     } while (seat < 'A' || seat > 'F');
     string seatStr(1,seat);
+
     // Create a Passenger object and add it to the flight
     Passenger newPassenger(stoi(id), firstName, lastName, phoneNumber, seatStr, row);
     f.add_passenger(newPassenger);
@@ -235,8 +237,19 @@ void add_passenger(Flight& f) {
         return;
     }
 
+   
+    string inputData;   
+    firstName.resize(20,' ');
+    lastName.resize(20,' ');
+    phoneNumber.resize(20,' ');
+    string seatInfo = to_string(row)+seatStr;
+    seatInfo.resize(4,' ');
+
+
     // Write passenger details to the file
-    outFile << firstName << " " << lastName << " " << phoneNumber << " " << seatStr << " " << id << endl;
+    outFile << firstName << lastName << phoneNumber << seatInfo << id;
+    
+    // Write passenger details to the file
 
     // Close the file
     outFile.close();
@@ -249,6 +262,30 @@ void pressEnter() {
     // Wait for a newline character
     while (cin.get() != '\n') {}
 }
+void save_info(const Flight& f) {
+    char response;
+   
+    cout << "Do you want to save the data in the 'flight_info.txt'? Please answer < Y or N > ";
+    cin >> response;
+
+    if(response == 'Y' || response == 'y') {
+        ofstream outFile("flight_info.txt", ios::app);
+
+        if (!outFile.is_open()) {
+            cerr << "Error: Could not open or create file flight_info.txt" << endl;
+            return;
+        }
+
+       
+        outFile.close();
+
+        cout << "Flight information saved successfully.\n";
+    } else {
+        cout << "Okay, let's exit out" << endl;
+        pressEnter();
+    }
+}
+
 
 void cleanStandardInputStream() {
     cin.clear();
@@ -292,7 +329,7 @@ int main() {
                 break;
 
             case 5:
-                // f.save_info();
+                save_info(f);
                 pressEnter();
                 break;
 
