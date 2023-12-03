@@ -102,7 +102,7 @@ int menu() {
     cin >> choice;
     return choice;
 }
-/*bool isValidPassengerID(const string& id){
+bool isValidPassengerID(const string& id){
     // Check if the length is 5
     if (id.length() != 5) {
         return false;
@@ -224,12 +224,24 @@ void add_passenger(Flight& f) {
             cout << "Invalid input. Please enter a valid seat character (A, B, C, D, E, or F)." << endl;
         }
     } while (seat < 'A' || seat > 'F');
-
+    string seatStr(1,seat);
     // Create a Passenger object and add it to the flight
-    Passenger newPassenger(stoi(id), firstName, lastName, phoneNumber, seat, row);
+    Passenger newPassenger(stoi(id), firstName, lastName, phoneNumber, seatStr, row);
     f.add_passenger(newPassenger);
+    ofstream outFile("flight_info.txt", ios::app);
 
-}*/
+    if (!outFile.is_open()) {
+        cerr << "Error: Could not open or create file flight_info.txt" << endl;
+        return;
+    }
+
+    // Write passenger details to the file
+    outFile << firstName << " " << lastName << " " << phoneNumber << " " << seatStr << " " << id << endl;
+
+    // Close the file
+    outFile.close();
+
+}
 void pressEnter() {
     cout << "<< Press Enter to Continue >> " << flush;
     cin.clear(); // Clear any remaining errors or flags
@@ -269,7 +281,7 @@ int main() {
 
             case 3: {
                 
-                //add_passenger(f);
+                add_passenger(f);
                 pressEnter();
                 break;
             }
