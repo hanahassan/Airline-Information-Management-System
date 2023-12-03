@@ -23,7 +23,7 @@ class Seat
         void set_column(char column);
         void set_occupied(bool occupied);
         
-        void assignPassenger(const Passenger& passenger);
+        //void assignPassenger(const Passenger& passenger);
 };
 
 #endif

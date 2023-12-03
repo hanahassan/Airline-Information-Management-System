@@ -32,3 +32,10 @@ void Seat::assignPassenger(const Passenger& passenger){
 
     
 }
+
+// void Seat::assignPassenger(const Passenger& passenger,const Flight& flight) {
+//     columnM = passenger.getSeat();
+//     rowM = passenger.getSeatNumber();
+//     Seat * x = flight.get_seatmap();
+//     x[columnM][rowM] -> occupiedM = true;
+// }

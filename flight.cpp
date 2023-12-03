@@ -71,6 +71,7 @@ void Flight::add_passenger(const Passenger& passenger) {
     passengers.push_back(passenger);
 }
 
+
 // Function to display passenger information
 void Flight::display_passengers() const {
     // Display headers
@@ -98,7 +99,6 @@ void Flight::remove_passenger(int passengerID) {
             std::cout << "Passenger with ID " << passengerID << " not found.\n";
         }
     }
-
 
 void Flight::create_empty_seat_map() {
     // Ensure rows and columns are non-negative
@@ -253,17 +253,8 @@ void Flight::save_info() {
     }
 }
 
-// Function to display the seat map
-// void Flight::displaySeatMap() const {
-//     Implement as needed
-// }
+void Flight::assignPassenger(const Passenger& passenger) {
+    Seat * seatptr = seatmap[passenger.getSeatNumber()][(passenger.getSeat()[0]) - 'A'];
+    seatptr -> occupiedM = true; 
+}
 
-// Function to populate_flight
-// void Flight::populate_flight(const string& filename) {
-//     Implement as needed
-// }
-
-// Function to clean buffer
-// void Flight::cleanStandardInputStream(void) {
-//     Implement as needed
-// }

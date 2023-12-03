@@ -64,6 +64,7 @@ public:
 
     void display_seat_map() const;
 
+    void assignPassenger(const Passenger& passenger);
 };
 
 #endif
