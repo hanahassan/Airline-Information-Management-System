@@ -74,8 +74,8 @@ void Flight::add_passenger(const Passenger& passenger) {
 // Function to display passenger information
 void Flight::display_passengers() const {
     // Display headers
-    cout << left << setw(20) << "First Name" << setw(20) << "Last Name" << setw(25) << "Phone" << setw(8) << "Row" << setw(8) << "Seat" << setw(8) << "ID\n";
-    cout << "--------------------------------------------------------------------------------------------\n";
+    cout << left << setw(20) << "First Name" << setw(20) << "Last Name" << setw(25) << "Phone" << setw(8) << "Row" << setw(8) << "Seat" << setw(8) << "ID";
+    cout << "\n--------------------------------------------------------------------------------------------\n";
     
     for (const Passenger& passenger : passengers) {
         // Display passenger details
