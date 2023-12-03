@@ -37,9 +37,16 @@ void populate_flight(Flight& f) {
     while (getline(inFile, line)) {
         istringstream passengerInfoStream(line);
 
+        string firstName = line.substr(0, 20);
+
+// Read next 20 characters as the last name
+        string lastName = line.substr(20, 20);
+        string phoneNumber = line.substr(40,20);
+        string seat = line.substr(60,4);
+        string idStr = line.substr(64,5);
         // Read first name, middle/last names, phone number, seat, and ID
-        string firstName, lastName, phoneNumber, seat, idStr;
-        passengerInfoStream >> firstName >> lastName >> phoneNumber >> seat >> idStr;
+      
+        
 
         try {
             // Convert idStr to integer
@@ -86,7 +93,134 @@ int menu() {
     cin >> choice;
     return choice;
 }
+/*bool isValidPassengerID(const string& id){
+    // Check if the length is 5
+    if (id.length() != 5) {
+        return false;
+    }
 
+    // Check if all characters are digits
+    for (char ch : id) {
+        if (!isdigit(ch)) {
+            return false;
+        }
+    }
+
+    // If all checks pass, the ID is valid
+    return true;
+}
+bool hasDigits(const string& str) {
+    // Check if the string contains any digits
+    for (char ch : str) {
+        if (isdigit(ch)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool isValidPhoneNumber(const string& phoneNumber) {
+    // Check if the length is 12 (including spaces)
+    if (phoneNumber.length() != 12) {
+        return false;
+    }
+
+    // Check if characters at appropriate positions are spaces
+    if (phoneNumber[3] != '-' || phoneNumber[7] != '-') {
+        return false;
+    }
+
+    // Check if all characters, except spaces, are digits
+    for (size_t i = 0; i < phoneNumber.length(); ++i) {
+        if (i != 3 && i != 7 && !isdigit(phoneNumber[i])) {
+            return false;
+        }
+    }
+
+    // If all checks pass, the phone number is valid
+    return true;
+}
+
+void add_passenger(Flight& f) {
+    string firstName, lastName, phoneNumber, id;
+    char seat;
+    int row;
+
+    // Get passenger ID
+    do {
+        cout << "Please enter the passenger ID (in this form XXXXX): ";
+        cin >> id;
+
+        if (!isValidPassengerID(id)) {
+            cout << "Invalid format. Please enter a 5-digit ID." << endl;
+        }
+    } while (!isValidPassengerID(id));
+
+    // Get passenger first name
+    do {
+        cout << "Please enter the passenger first name: ";
+        cin >> firstName;
+
+        if (hasDigits(firstName)) {
+            cout << "Invalid input. Please enter a first name without any numbers." << endl;
+        }
+    } while (hasDigits(firstName));
+
+    // Get passenger last name
+    do {
+        cout << "Please enter the passenger last name: ";
+        cin >> lastName;
+
+        if (hasDigits(lastName)) {
+            cout << "Invalid input. Please enter a last name without any numbers." << endl;
+        }
+    } while (hasDigits(lastName));
+
+    // Get passenger phone number
+    do {
+        cout << "Please enter the passenger phone number (in this format XXX-XXX-XXXX): ";
+        cin >> phoneNumber;
+
+        if (!isValidPhoneNumber(phoneNumber)) {
+            cout << "Invalid format. Please enter a 10-digit phone number with spaces." << endl;
+        }
+    } while (!isValidPhoneNumber(phoneNumber));
+
+    // Get passenger desired row
+    do {
+        cout << "Enter the passenger's desired row: ";
+        cin >> row;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+            cout << "Invalid input. Please enter a valid integer." << endl;
+        } else if (row < 1 || row > 24) {
+            cout << "Invalid row number. Please enter a number between 1 and 24." << endl;
+        }
+    } while (row < 1 || row > 24);
+
+    // Get passenger desired seat
+    do {
+        cout << "Enter passenger's desired seat (A, B, C, D, E, or F): ";
+        cin >> seat;
+
+        // Convert the entered character to uppercase for case-insensitivity
+        seat = toupper(seat);
+
+        // Check if input is a valid character
+        if (cin.fail() || (seat < 'A' || seat > 'F')) {
+            cin.clear(); // Clear error flag
+            cin.ignore(numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+            cout << "Invalid input. Please enter a valid seat character (A, B, C, D, E, or F)." << endl;
+        }
+    } while (seat < 'A' || seat > 'F');
+
+    // Create a Passenger object and add it to the flight
+    Passenger newPassenger(stoi(id), firstName, lastName, phoneNumber, seat, row);
+    f.add_passenger(newPassenger);
+
+}*/
 void pressEnter() {
     cout << "<< Press Enter to Continue >> " << flush;
     cin.clear(); // Clear any remaining errors or flags
@@ -129,32 +263,8 @@ int main() {
                 break;
 
             case 3: {
-                string firstName, lastName, phoneNumber, seat;
-                int id, row;
-
-                // Get passenger information from the user
-                cout << "Please enter the passenger id: ";
-                cin >> id;
-                cleanStandardInputStream();
-                cout << "Please enter the passenger first name: ";
-                cin >> firstName;
-                cleanStandardInputStream();
-                cout << "Please enter the passenger last name: ";
-                cin >> lastName;
-                cleanStandardInputStream();
-                cout << "Please enter the passenger phone number: ";
-                cin >> phoneNumber;
-                cleanStandardInputStream();
-                cout << "Enter the passenger's desired row: ";
-                cin >> row;
-                cleanStandardInputStream();
-                cout << "Enter the passenger's desired seat: ";
-                cin >> seat;
-                cleanStandardInputStream();
-
-                // Create a Passenger object and add it to the flight
-                Passenger newPassenger(id, firstName, lastName, phoneNumber, seat, row);
-                f.add_passenger(newPassenger);
+                
+                //add_passenger(f);
                 pressEnter();
                 break;
             }
