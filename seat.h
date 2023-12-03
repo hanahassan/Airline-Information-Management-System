@@ -15,7 +15,7 @@ class Seat
         char statusM;
         bool occupied;
     public:
-        Seat(): rowM(1), columnM('A'), statusM(0) {};
+        Seat(): rowM(1), columnM('A'), statusM(0), occupied(false) {};
         Seat(int row, char column, char status);
         int get_row() const;
         char get_column() const;
