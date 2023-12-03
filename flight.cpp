@@ -82,14 +82,30 @@ void Flight::display_passengers() const {
 }
 
 void Flight::remove_passenger(int passengerID) {
-    auto it = remove_if(passengers.begin(), passengers.end(),
-                             [passengerID](const Passenger& passenger) { return passenger.getID() == passengerID; });
+    try {
+        // Convert the input to an integer
+        int convertedID = std::stoi(std::to_string(passengerID));
 
-    if (it != passengers.end()) {
-        passengers.erase(it, passengers.end());
-        cout << "Passenger with ID " << passengerID << " removed successfully.\n";
-    } else {
-        cout << "Passenger with ID " << passengerID << " not found.\n";
+        // Check if the converted ID is a 5-digit number
+        if (convertedID < 10000 || convertedID > 99999) {
+            std::cout << "Invalid passenger ID. Please enter a 5-digit ID.\n";
+            return;
+        }
+
+        // Use lambda function to find the passenger
+        auto it = std::remove_if(passengers.begin(), passengers.end(),
+            [convertedID](const Passenger& passenger) { return passenger.getID() == convertedID; });
+
+        if (it != passengers.end()) {
+            passengers.erase(it, passengers.end());
+            std::cout << "Passenger with ID " << convertedID << " removed successfully.\n";
+        } else {
+            std::cout << "Passenger with ID " << convertedID << " not found.\n";
+        }
+    } catch (const std::invalid_argument& e) {
+        std::cout << "Invalid input. Please enter a valid integer ID.\n";
+    } catch (const std::out_of_range& e) {
+        std::cout << "Invalid input. The entered ID is out of range.\n";
     }
 }
 
