@@ -71,6 +71,7 @@ void populate_flight(Flight& f) {
             // Create a Passenger object and add it to the flight
             Passenger newPassenger(id, firstName, lastName, phoneNumber, resultString, row);
             f.add_passenger(newPassenger);
+            
         } catch (const std::invalid_argument& e) {
             cerr << "Error: Invalid argument in stoi conversion. Check the input file format." << endl;
             // Handle the error appropriately (e.g., continue reading the next line)

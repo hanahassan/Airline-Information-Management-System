@@ -142,44 +142,38 @@ void Flight::resize_seat_map(int rows, int columns) {
 
 void Flight::display_seat_map() const {
     // Check if the seat map has been initialized
-    if (seatmap.empty() || seatmap[0].empty()) {
-        std::cerr << "Seat map not initialized. Please create an empty seat map first.\n";
-        return;
+    std::cout << "Flight Seat Map for Flight " << idM << ":" << std::endl;
+    std::cout << "     ";
+    for (int i = 0; i < num_columnsM; ++i) {
+        std::cout << static_cast<char>('A' + i) << "   ";
     }
+    std::cout << std::endl;
 
-    char letter = 'A';
 
-    // Display seat map header
-    cout << setw(num_columnsM + 1) << "" << setfill(' ') << setw(20) << left << "Aircraft Seat Map" << endl << "     ";
-    for (int i = 0; i < num_columnsM; i++) {
-        cout << setw(4) << letter;
-        letter++;
-    }
 
-    cout << endl << "   ";
-    for (int j = 0; j < num_columnsM; j++) {
-        cout << "+---";
-    }
-    cout << "+" << endl;
-
-    // Display seat map content
-    for (int k = 0; k <= num_rowsM; k++) {
-        cout << setw(3) << k;
-        for (int l = 0; l < num_columnsM; l++) {
-            cout << setw(2) << "|";
-            if (k <= (num_rowsM) && seatmap[k][l].get_occupied()) {  // Check if k is within bounds before accessing seatmap
-                cout << setw(2) << "X";
-            } 
-            else {
-                cout << setw(2) << "\0";
+    for (int i = 1; i <= num_rowsM; ++i) {
+        std::cout << std::setw(2) << i << " ";
+        for (int j = 0; j < num_columnsM; ++j) {
+            bool is_occupied = false;
+            for (size_t k = 0; k < passengers.size(); ++k) {
+                int row = passengers[k].getSeatNumber();
+                string myString = passengers[k].getSeat();
+                char seat = myString[0];
+                if (row == i && j == seat - 'A') {
+                    std::cout << "| X ";
+                    is_occupied = true;
+                    break;
+                }
+            }
+            if (!is_occupied) {
+                std::cout << "|   ";
             }
         }
-
-        cout << "|" << endl << "   ";
-        for (int j = 0; j < num_columnsM; j++) {
-            cout << "+---";
+        std::cout << "|" << std::endl << "   ";
+        for (int j = 0; j < num_columnsM; ++j) {
+            std::cout << "+---";
         }
-        cout << "+" << endl;
+        std::cout << "+" << std::endl;
     }
 }
 
