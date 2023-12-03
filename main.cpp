@@ -244,10 +244,6 @@ int main() {
     displayHeader();
     cleanStandardInputStream();
     populate_flight(f);
-    
-    cout << "\nPassengers after populating the flight:\n";
-    f.display_passengers();
-
 
     int choice = 1;
     while (choice != 0) {

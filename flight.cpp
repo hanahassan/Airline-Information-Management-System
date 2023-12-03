@@ -65,15 +65,17 @@ void Flight::add_passenger(const Passenger& passenger) {
 
 // Function to display passenger information
 void Flight::display_passengers() const {
-
+    // Display headers
+    cout << left << setw(20) << "First Name" << setw(20) << "Last Name" << setw(25) << "Phone" << setw(8) << "Row" << setw(8) << "Seat" << setw(8) << "ID\n";
+    cout << "--------------------------------------------------------------------------------------------\n";
+    
     for (const Passenger& passenger : passengers) {
-        cout << "ID: " << passenger.getID() << "\n";
-        cout << "First Name: " << passenger.getFirstName() << "\n";
-        cout << "Last Name: " << passenger.getLastName() << "\n";
-        cout << "Phone Number: " << passenger.getPhoneNumber() << "\n";
-        cout << "Seat: " << passenger.getSeat() << "\n";
-        cout << "Row: " << passenger.getSeatNumber() << "\n";
-        cout << "---------------------------\n";
+        // Display passenger details
+        cout << left << setw(20) << passenger.getFirstName() << setw(20) << passenger.getLastName() << setw(25) << passenger.getPhoneNumber()
+             << setw(8) << passenger.getSeatNumber() << setw(8) << passenger.getSeat() << setw(8) << passenger.getID() << "\n";
+        
+        // Print a long dashed line after each row
+        cout << "--------------------------------------------------------------------------------------------\n";
     }
 }
 
