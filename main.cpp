@@ -210,22 +210,22 @@ void add_passenger(Flight& f) {
         }
     } while (!isValidPhoneNumber(phoneNumber));
 
+    // Get the number of columns from the flight
+    int numColumns = f.get_columnsM();
+
     // Get passenger desired row
     do {
-        cout << "Enter the passenger's desired row: ";
+        cout << "Enter the passenger's desired row (starting from 1, up to " << f.get_rowsM() << "): ";
         cin >> row;
 
         if (cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
             cout << "Invalid input. Please enter a valid integer." << endl;
-        } else if (row < 0 || row > 24) {
-            cout << "Invalid row number. Please enter a number between 0 and 24." << endl;
+        } else if (row < 1 || row > f.get_rowsM()) {
+            cout << "Invalid row number. Please enter a number between 1 and " << f.get_rowsM() << "." << endl;
         }
-    } while (row < 0 || row > 24);
-
-    // Get the number of columns from the flight
-    int numColumns = f.get_columnsM();
+    } while (row < 1 || row > f.get_rowsM());
 
     // Get passenger desired seat
     do {
@@ -249,13 +249,12 @@ void add_passenger(Flight& f) {
             }
             cout << ")." << endl;
         }
-        } while (seat < 'A' || seat >= 'A' + numColumns);
-        string seatStr(1, seat);
-
+    } while (seat < 'A' || seat >= 'A' + numColumns);
+    string seatStr(1, seat);
 
     // Create a Passenger object and add it to the flight
     Passenger newPassenger(stoi(id), firstName, lastName, phoneNumber, seatStr, row);
-    f.add_passenger(newPassenger); 
+    f.add_passenger(newPassenger);
 }
 
 int main() {
