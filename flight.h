@@ -43,10 +43,10 @@ public:
     // Function to add a passenger to the flight
     void add_passenger(const Passenger& passenger);
 
-    //Function to display passenger information
+    // Function to display passenger information
     void display_passengers() const;
     
-    //Function to save the info onto the text file
+    // Function to save the info onto the text file
     void save_info();
 
     // Function to remove a passenger to the flight

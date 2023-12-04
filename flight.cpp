@@ -79,14 +79,14 @@ void Flight::display_passengers() const {
 
 // Function to remove a passenger to the flight
 void Flight::remove_passenger(int passengerID) {
-    auto it = std::remove_if(passengers.begin(), passengers.end(),
+    auto it = remove_if(passengers.begin(), passengers.end(),
                              [passengerID](const Passenger& passenger) { return passenger.getID() == passengerID; });
 
         if (it != passengers.end()) {
             passengers.erase(it, passengers.end());
-            std::cout << "Passenger with ID " << passengerID << " removed successfully.\n";
+            cout << "Passenger with ID " << passengerID << " removed successfully.\n";
         } else {
-            std::cout << "Passenger with ID " << passengerID << " not found.\n";
+            cout << "Passenger with ID " << passengerID << " not found.\n";
         }
     }
 
@@ -94,7 +94,7 @@ void Flight::remove_passenger(int passengerID) {
 void Flight::create_empty_seat_map() {
     // Ensure rows and columns are non-negative
     if (num_rowsM <= 0 || num_columnsM <= 0) {
-        std::cerr << "Invalid number of rows or columns. Please set valid values.\n";
+        cerr << "Invalid number of rows or columns. Please set valid values.\n";
         return;
     }
 
@@ -113,7 +113,7 @@ void Flight::create_empty_seat_map() {
 void Flight::resize_seat_map(int rows, int columns) {
     // Ensure rows and columns are non-negative
     if (rows <= 0 || columns <= 0) {
-        std::cerr << "Invalid number of rows or columns. Please set valid values.\n";
+        cerr << "Invalid number of rows or columns. Please set valid values.\n";
         return;
     }
 
@@ -140,117 +140,107 @@ void Flight::display_seat_map() const {
     for (int i = 0; i < num_columnsM; ++i) {
         cout << static_cast<char>('A' + i) << "   ";
     }
-    std::cout << std::endl;
+    cout << endl;
 
-
-
+    // Creates the rows
     for (int i = 1; i <= num_rowsM; ++i) {
-        std::cout << std::setw(2) << i << " ";
+        cout << setw(2) << i << " ";
+
+        // Creates the columns
         for (int j = 0; j < num_columnsM; ++j) {
             bool is_occupied = false;
+
+            // Checks to see if a passenger is seating in each box
             for (size_t k = 0; k < passengers.size(); ++k) {
                 int row = passengers[k].getSeatNumber();
                 string myString = passengers[k].getSeat();
                 char seat = myString[0];
+                
+                // Puts a X if is_occupied is true
                 if (row == i && j == seat - 'A') {
-                    std::cout << "| X ";
+                    cout << "| X ";
                     is_occupied = true;
                     break;
                 }
             }
             if (!is_occupied) {
-                std::cout << "|   ";
+                cout << "|   ";
             }
         }
-        std::cout << "|" << std::endl << "   ";
+        cout << "|" << endl << "   ";
         for (int j = 0; j < num_columnsM; ++j) {
-            std::cout << "+---";
+            cout << "+---";
         }
-        std::cout << "+" << std::endl;
+        cout << "+" << endl;
     }
 }
 
+// Function to save the info onto the text file
 void Flight::save_info() {
     char response;
-   
     cout << "Do you want to save the data in the 'flight_info.txt'? Please answer < Y or N > ";
     cin >> response;
 
+    // Error-checking if file can open
     if(response == 'Y' || response == 'y') {
-         std::ifstream inputFile("flight_info.txt");
+         ifstream inputFile("flight_info.txt");
            if (!inputFile.is_open()) {
-        std::cerr << "Unable to open the file for reading." << std::endl;
+        cerr << "Unable to open the file for reading." << endl;
         
     }
-     std::string firstLine;
-    std::getline(inputFile, firstLine);
+    string firstLine;
+    getline(inputFile, firstLine);
     inputFile.close();
-     std::ofstream outputFile("flight_info.txt", std::ios::trunc);
+    ofstream outputFile("flight_info.txt", ios::trunc);
     if (!outputFile.is_open()) {
-        std::cerr << "Unable to open the file for writing." << std::endl;
+        cerr << "Unable to open the file for writing." << endl;
        
     }
-    outputFile << firstLine << std::endl;
+    outputFile << firstLine << endl;
     outputFile.close();
 
-        ofstream outFile("flight_info.txt", ios::app);
+    ofstream outFile("flight_info.txt", ios::app);
     
 
-        if (!outFile.is_open()) {
-            cerr << "Error: Could not open or create file flight_info.txt" << endl;
-            return;
+    if (!outFile.is_open()) {
+        cerr << "Error: Could not open or create file flight_info.txt" << endl;
+        return;
 
-        }
+    }
 
-       
-
-
-        for (const Passenger& passenger : passengers) {
+    for (const Passenger& passenger : passengers) {
         
         string firstName = passenger.getFirstName();
         firstName.resize(20,' ');
+
         string lastName = passenger.getLastName();
         lastName.resize(20,' ');
+
         string phoneNumber = passenger.getPhoneNumber();
         phoneNumber.resize(20,' ');
+
         int row = passenger.getSeatNumber();
         string rowNew = to_string(row);
+
         string seatChar = passenger.getSeat();
         string seatStr = rowNew+seatChar;
         seatStr.resize(4,' ');
+
         int id = passenger.getID();
         string idNew = to_string(id);
     
-
-   
-
-    // Write passenger details to the file
-    outFile << firstName<< lastName << phoneNumber << seatStr << id << '\n';
+        // Write passenger details to the file
+        outFile << firstName<< lastName << phoneNumber << seatStr << id << '\n';
     
-    // Write passenger details to the file
+        // Write passenger details to the file
     }
 
        
-        outFile.close();
-
-        cout << "Flight information saved successfully.\n";
+    outFile.close();
+    cout << "Flight information saved successfully.\n";
+    
     } else {
         cout << "Okay, let's exit out" << endl;
        
     }
 }
-
-// Function to display the seat map
-// void Flight::displaySeatMap() const {
-//     Implement as needed
-// }
-
-// Function to populate_flight
-// void Flight::populate_flight(const string& filename) {
-//     Implement as needed
-// }
-
-// Function to clean buffer
-// void Flight::cleanStandardInputStream(void) {
-//     Implement as needed
-// }
