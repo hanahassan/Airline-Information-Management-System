@@ -2,21 +2,21 @@
 #include "airline.h"
 
 // Setters implementation
-void Airline::set_name(std::string airline_name) {
+void Airline::set_name(string airline_name) {
     name = airline_name;
 }
 
-void Airline::set_flights(const std::vector<Flight>& flight) {
+void Airline::set_flights(const vector<Flight>& flight) {
     this->flights = flight;
 }
 
 // Getters implementation 
 
-std::string Airline::get_name() const {
+string Airline::get_name() const {
     return name;
 }
 
-std::vector<Flight> Airline::get_flights() const {
+vector<Flight> Airline::get_flights() const {
     return flights;
 }
 
