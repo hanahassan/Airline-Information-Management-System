@@ -93,8 +93,8 @@ void Flight::remove_passenger(int passengerID) {
  // Function to create an empty seat map
 void Flight::create_empty_seat_map() {
     // Ensure rows and columns are non-negative
-    if (num_rowsM < 0 || num_columnsM < 0) {
-        cerr << "Invalid number of rows or columns. Please set valid values.\n";
+    if (num_rowsM <= 0 || num_columnsM <= 0) {
+        //cerr << "Invalid number of rows or columns. Please set valid values.\n";
         return;
     }
 
@@ -112,8 +112,8 @@ void Flight::create_empty_seat_map() {
 // Function to resize the seat map
 void Flight::resize_seat_map(int rows, int columns) {
     // Ensure rows and columns are non-negative
-    if (rows < 0 || columns < 0) {
-        cerr << "Invalid number of rows or columns. Please set valid values.\n";
+    if (rows <= 0 || columns <= 0) {
+        //cerr << "Invalid number of rows or columns. Please set valid values.\n";
         return;
     }
 
