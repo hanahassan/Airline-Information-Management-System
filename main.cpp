@@ -46,10 +46,10 @@ void quit() {
 // Function to populate flight
 void populate_flight(Flight& f) {
     ifstream inFile;
-    string fileName = "flight_info.txt";
+    string fileName;
 
-    // cout << "Enter the directory of your file: ";
-    // cin >> fileName;
+    cout << "Enter the name of your file: ";
+    cin >> fileName;
     inFile.open(fileName);
 
     if (!inFile.is_open()) {
