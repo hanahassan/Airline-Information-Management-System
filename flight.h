@@ -23,37 +23,33 @@ private:
     vector<vector<Seat>> seatmap;
 
 public:
+    // Constructors
     Flight();
     Flight(string id, int rows, int columns);
-    Flight(const Flight& source);
 
-    ~Flight();
-
+    // Flight getter functions
     string get_idM() const;
     int get_rowsM() const;
     int get_columnsM() const;
     vector<Passenger> get_passengers() const;
     vector<vector<Seat>> get_seatmap() const;
 
+    // Flight setter functions
     void set_idM(string id);
     void set_numrowsM(int rows);
     void set_numcolumnsM(int columns);
     void set_passengers(const vector<Passenger>& passengers);
-    //void set_seatmap(const vector<vector<Seat>>& seatmap);
 
     // Function to add a passenger to the flight
     void add_passenger(const Passenger& passenger);
 
-    // Function to display the seat map
-    //void displaySeatMap() const;
-
-    //Function to populate_flight
-    //void populate_flight(const string& filename);
-
     //Function to display passenger information
     void display_passengers() const;
+    
+    //Function to save the info onto the text file
     void save_info();
 
+    // Function to remove a passenger to the flight
     void remove_passenger(int passengerID);
 
     // Function to create an empty seat map
@@ -62,6 +58,7 @@ public:
     // Function to resize the seat map
     void resize_seat_map(int rows, int columns);
 
+    // Function to display the seat map
     void display_seat_map() const;
 
 };

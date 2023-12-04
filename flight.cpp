@@ -18,17 +18,7 @@ Flight::Flight() : num_rowsM(0), num_columnsM(0) {
 Flight::Flight(string id, int rows, int columns) : idM(id), num_rowsM(rows), num_columnsM(columns) {
 }
 
-// Copy constructor - idk if we need this?
-Flight::Flight(const Flight& source) : idM(source.idM), num_rowsM(source.num_rowsM), num_columnsM(source.num_columnsM) {
-    // Implement copying for other members if needed
-}
-
-// Destructor - idk if we need this?
-Flight::~Flight() {
-    // Implement any necessary cleanup
-}
-
-// Getter functions
+// Getter implementation
 string Flight::get_idM() const {
     return idM;
 }
@@ -49,7 +39,7 @@ vector<vector<Seat>> Flight::get_seatmap() const {
     return seatmap;
 }
 
-// Setter functions
+// Setter implementation
 void Flight::set_idM(string id) {
     idM = id;
 }
@@ -87,6 +77,7 @@ void Flight::display_passengers() const {
     }
 }
 
+// Function to remove a passenger to the flight
 void Flight::remove_passenger(int passengerID) {
     auto it = std::remove_if(passengers.begin(), passengers.end(),
                              [passengerID](const Passenger& passenger) { return passenger.getID() == passengerID; });
@@ -99,7 +90,7 @@ void Flight::remove_passenger(int passengerID) {
         }
     }
 
-
+ // Function to create an empty seat map
 void Flight::create_empty_seat_map() {
     // Ensure rows and columns are non-negative
     if (num_rowsM <= 0 || num_columnsM <= 0) {
@@ -118,6 +109,7 @@ void Flight::create_empty_seat_map() {
     }
 }
 
+// Function to resize the seat map
 void Flight::resize_seat_map(int rows, int columns) {
     // Ensure rows and columns are non-negative
     if (rows <= 0 || columns <= 0) {
@@ -140,12 +132,13 @@ void Flight::resize_seat_map(int rows, int columns) {
     num_columnsM = columns;
 }
 
+// Function to display the seat map
 void Flight::display_seat_map() const {
     // Check if the seat map has been initialized
-    std::cout << "Flight Seat Map for Flight " << idM << ":" << std::endl;
-    std::cout << "     ";
+    cout << "Flight Seat Map for Flight " << idM << ":" << endl;
+    cout << "     ";
     for (int i = 0; i < num_columnsM; ++i) {
-        std::cout << static_cast<char>('A' + i) << "   ";
+        cout << static_cast<char>('A' + i) << "   ";
     }
     std::cout << std::endl;
 

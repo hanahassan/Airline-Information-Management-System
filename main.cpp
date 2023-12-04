@@ -3,9 +3,45 @@
 #include "main.h"
 #include <string>
 #include <cstdlib>
-// #include "flight.h"  // Add this line
-// #include "passenger.h"  // Add this line
 
+void displayHeader() {
+    cout << "Version: 1.0\n";
+    cout << "Term Project - Flight Management Program in C++\n";
+    cout << "Produced by: Kamand Ghorbanzadeh, Hana Hassan, Hasnain Haider\n";
+    cout << "Year: 2023\n\n";
+}
+
+int menu() {
+    int choice = 1;
+
+    cout << "Please select one of the following options:\n\n";
+    cout << "1. Display Flight Seat Map.\n";
+    cout << "2. Display Passengers Information.\n";
+    cout << "3. Add a New Passenger.\n";
+    cout << "4. Remove an Existing Passenger\n";
+    cout << "5. Save Data\n";
+    cout << "6. Quit\n";
+    cout << "\nEnter your choice: (1,2,3,4,5, or 6) ";
+
+    cin >> choice;
+    return choice;
+}
+
+void pressEnter() {
+    std::cout << "Press Enter to continue... ";
+    std::cin.get();
+
+}
+
+void cleanStandardInputStream() {
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
+
+void quit() {
+    cout << "Terminating the program. Goodbye!\n";
+    exit(0);
+}
 
 // Function to populate flight
 void populate_flight(Flight& f) {
@@ -41,7 +77,7 @@ void populate_flight(Flight& f) {
 
         string firstName = line.substr(0, 20);
 
-// Read next 20 characters as the last name
+        // Read next 20 characters as the last name
         string lastName = line.substr(20, 20);
         string phoneNumber = line.substr(40,20);
         string seat = line.substr(60,4);
@@ -57,7 +93,7 @@ void populate_flight(Flight& f) {
             // Separate row and seat from the combined information
             size_t lastDigitIndex = seat.find_last_of("0123456789");
             int row = stoi(seat.substr(0, lastDigitIndex + 1));
-            char column = seat.back();
+            //char column = seat.back();
             std::string resultString = "";
 
     // Iterate through each character in the input string
@@ -81,29 +117,6 @@ void populate_flight(Flight& f) {
     inFile.close();
 }
 
-
-void displayHeader() {
-    cout << "Version: 1.0\n";
-    cout << "Term Project - Flight Management Program in C++\n";
-    cout << "Produced by: Kamand Ghorbanzadeh, Hana Hassan, Hasnain Haider\n";
-    cout << "Year: 2023\n\n";
-}
-
-int menu() {
-    int choice = 1;
-
-    cout << "Please select one of the following options:\n\n";
-    cout << "1. Display Flight Seat Map.\n";
-    cout << "2. Display Passengers Information.\n";
-    cout << "3. Add a New Passenger.\n";
-    cout << "4. Remove an Existing Passenger\n";
-    cout << "5. Save Data\n";
-    cout << "6. Quit\n";
-    cout << "\nEnter your choice: (1,2,3,4,5, or 6) ";
-
-    cin >> choice;
-    return choice;
-}
 bool isValidPassengerID(const string& id){
     // Check if the length is 5
     if (id.length() != 5) {
@@ -245,27 +258,10 @@ void add_passenger(Flight& f) {
     f.add_passenger(newPassenger); 
 }
 
-void pressEnter() {
-    std::cout << "Press Enter to continue... ";
-    std::cin.get();
-
-}
-
-void cleanStandardInputStream() {
-    cin.clear();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-}
-
-void quit() {
-    cout << "Terminating the program. Goodbye!\n";
-    exit(0);
-}
-
 int main() {
     Flight f;
     displayHeader();
     populate_flight(f);
-
     int choice = 1;
     while (choice != 0) {
         switch (menu()) {
@@ -279,19 +275,16 @@ int main() {
                 pressEnter();
                 break;
 
-            case 3: {
-                
+            case 3: 
                 add_passenger(f);
                 pressEnter();
                 break;
-            }
 
             case 4:
                 int passengerIDToRemove;
                 cout << "Enter the ID of the passenger you want to remove: ";
                 cin >> passengerIDToRemove;
                 f.remove_passenger(passengerIDToRemove);
-
                 pressEnter();
                 break;
 
