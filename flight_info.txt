@@ -6,3 +6,4 @@ Bill                Moore DAVIS         403-020-0020        15B 10004
 Ali                 Hassan              403-003-0300        19D 10005
 Martine Olivier     Van Paris           403-100-3000        16E 10006
 Hasnain             Haider              252-363-3723        10B 56927
+Hana                Hassan              123-456-7899        4A  11111
